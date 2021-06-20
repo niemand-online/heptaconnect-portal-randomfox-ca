@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace NiemandOnline\HeptaConnect\Portal\RandomFoxCa\Packer;
 
-use Heptacom\HeptaConnect\Core\Storage\NormalizationRegistry;
 use Heptacom\HeptaConnect\Core\Storage\Struct\SerializableStream;
 use Heptacom\HeptaConnect\Dataset\Ecommerce\Media\Media;
+use Heptacom\HeptaConnect\Portal\Base\Serialization\Contract\NormalizationRegistryContract;
 use Psr\Http\Message\StreamInterface;
 
 class MediaPacker
 {
-    private NormalizationRegistry $normalizer;
+    private NormalizationRegistryContract $normalizer;
 
-    public function __construct(NormalizationRegistry $normalizer)
+    public function __construct(NormalizationRegistryContract $normalizer)
     {
         $this->normalizer = $normalizer;
     }
