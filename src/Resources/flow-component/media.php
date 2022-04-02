@@ -5,7 +5,6 @@ use Heptacom\HeptaConnect\Dataset\Ecommerce\Media\Media;
 use Heptacom\HeptaConnect\Portal\Base\Builder\FlowComponent;
 use NiemandOnline\HeptaConnect\Portal\RandomFoxCa\Packer\MediaPacker;
 use NiemandOnline\HeptaConnect\Portal\RandomFoxCa\Support\RandomFoxApiClient;
-use Psr\Http\Message\StreamInterface;
 
 FlowComponent::explorer(Media::class)
     ->run(static function (RandomFoxApiClient $api, MediaPacker $packer, int $configPreviewLimit, bool $configPreview): iterable {
@@ -18,16 +17,16 @@ FlowComponent::explorer(Media::class)
 
         while ($i < $max) {
             $id = (string) $i;
-            $blob = $api->getImage($id);
+            $url = $api->getImageUrl($id);
 
-            if (!$blob instanceof StreamInterface) {
+            if (!$api->isUrlAvailable($url)) {
                 break;
             }
 
-            yield $packer->pack($id, $blob);
+            yield $packer->pack($id, $url);
             ++$i;
         }
     });
 
 FlowComponent::emitter(Media::class)
-    ->run(static fn (string $id, RandomFoxApiClient $client, MediaPacker $packer): ?Media => $packer->packOptional($id, $client->getImage($id)));
+    ->run(static fn (string $id, RandomFoxApiClient $client, MediaPacker $packer): ?Media => $packer->packOptional($id, $client->getImageUrl($id)));
