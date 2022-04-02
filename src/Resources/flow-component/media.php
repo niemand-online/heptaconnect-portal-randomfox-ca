@@ -5,7 +5,7 @@ use Heptacom\HeptaConnect\Dataset\Ecommerce\Media\Media;
 use Heptacom\HeptaConnect\Portal\Base\Builder\FlowComponent;
 use Heptacom\HeptaConnect\Portal\Base\Portal\Contract\ConfigurationContract;
 use NiemandOnline\HeptaConnect\Portal\RandomFoxCa\Packer\MediaPacker;
-use NiemandOnline\HeptaConnect\Portal\RandomFoxCa\Portal;
+use NiemandOnline\HeptaConnect\Portal\RandomFoxCa\RandomFoxCaPortal;
 use NiemandOnline\HeptaConnect\Portal\RandomFoxCa\Support\RandomFoxApiClient;
 use Psr\Http\Message\StreamInterface;
 
@@ -14,8 +14,8 @@ FlowComponent::explorer(Media::class)
         $i = 1;
         $max = \PHP_INT_MAX;
 
-        if ($config->get(Portal::CONFIG_PREVIEW)) {
-            $max = ((int) $config->get(Portal::CONFIG_PREVIEW_LIMIT)) + 1;
+        if ($config->get(RandomFoxCaPortal::CONFIG_PREVIEW)) {
+            $max = ((int) $config->get(RandomFoxCaPortal::CONFIG_PREVIEW_LIMIT)) + 1;
         }
 
         while ($i < $max) {

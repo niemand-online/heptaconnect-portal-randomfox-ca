@@ -33,7 +33,7 @@
     "extra": {
         "heptaconnect": {
             "portals": [
-                "NiemandOnline\\HeptaConnect\\Portal\\RandomFoxCa\\Portal"
+                "NiemandOnline\\HeptaConnect\\Portal\\RandomFoxCa\\RandomFoxCaPortal"
             ]
         }
     }

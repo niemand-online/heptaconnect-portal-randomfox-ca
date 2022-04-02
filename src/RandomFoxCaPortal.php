@@ -6,7 +6,7 @@ namespace NiemandOnline\HeptaConnect\Portal\RandomFoxCa;
 use Heptacom\HeptaConnect\Portal\Base\Portal\Contract\PortalContract;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class Portal extends PortalContract
+class RandomFoxCaPortal extends PortalContract
 {
     public const CONFIG_PREVIEW = 'preview';
 
