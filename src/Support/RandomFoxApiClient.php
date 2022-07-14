@@ -35,7 +35,7 @@ class RandomFoxApiClient
     {
         try {
             $request = $this->requestFactory->createRequest('HEAD', $this->uriFactory->createUri($url));
-            $this->clien->sendRequest($request);
+            $this->client->sendRequest($request);
             return true;
         } catch (\Throwable $_) {
             return false;
